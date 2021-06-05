@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux'
+import { Link } from "react-router-dom";
 import { Modal, Button, Form, Input, InputNumber, Upload, Space, Popconfirm, Table, Row, Select } from 'antd';
 import { UploadOutlined, DeleteOutlined, EditOutlined } from '@ant-design/icons';
 
@@ -113,7 +114,7 @@ function ProductListAdminPage({
       dataIndex: 'name',
       key: 'name',
       width: 150,
-      render: text => <a>{text}</a>,
+      render: text => <Link style={{color: 'black'}}>{text}</Link>,
     },
     {
       title: 'Loại sách',
@@ -150,7 +151,7 @@ function ProductListAdminPage({
       key: 'countInStock',
     },
     {
-      title: 'Giá',
+      title: 'Giá (VND)',
       dataIndex: 'price',
       key: 'price',
     },
@@ -217,20 +218,20 @@ function ProductListAdminPage({
           name="productFrom"
           initialValues={initialValues}
         >
-          <Form.Item label="Tên Sách" name="name" rules={[{ required: true }]}>
+          <Form.Item label="Tên Sách" name="name" rules={[{ required: true, message:'Vui lòng nhập tên của sách!' }]}>
             <Input />
           </Form.Item>
           <Form.Item
             name="categoryId"
             label="Loại sách"
-            rules={[{ required: true }]}
+            rules={[{ required: true, message: 'Vui lòng nhập loại sách!' }]}
           >
             <Select placeholder="Loại sản phẩm">{renderCategory()}</Select>
           </Form.Item>
           <Form.Item
             label="Nhà cung cấp"
             name="publisherId"
-            rules={[{ required: true }]}
+            rules={[{ required: true, message: 'Vui lòng nhập tên nhà cung cấp!' }]}
           >
             <Select placeholder="Loại sản phẩm">{renderPublisher()}</Select>
           </Form.Item>
@@ -245,7 +246,7 @@ function ProductListAdminPage({
             }}
             validateFirst
             rules={[
-              { required: true },
+              { required: true, message: 'Vui lòng tải ảnh lên!' },
               () => ({
                 validator(_, value) {
                   if (!['image/png', 'image/jpeg'].includes(value[0].type)) {
@@ -273,12 +274,15 @@ function ProductListAdminPage({
           <Form.Item
             label="Số lượng sách"
             name="countInStock"
-            rules={[{ required: true }]}
+            rules={[{ required: true, message: 'Vui lòng nhập số lượng của sách!'}]}
           >
-            <InputNumber min={1} />
+            <InputNumber min={1} style={{width: 200}} min="0"/>
           </Form.Item>
-          <Form.Item label="Giá" name="price" rules={[{ required: true }]}>
-            <InputNumber />
+          <Form.Item 
+            label="Giá"
+            name="price"
+            rules={[{ required: true, message: 'Vui lòng nhập giá của sách' }]}>
+            <InputNumber style={{width: 200}} min="0" />
           </Form.Item>
           <Form.Item
             label="Mã hàng"
@@ -296,13 +300,13 @@ function ProductListAdminPage({
             label="Năm xuất bản"
             name="publicYear"
           >
-            <InputNumber/>
+            <InputNumber style={{width: 200}} min="0"/>
           </Form.Item>
           <Form.Item
-            label="Trọng lượng"
+            label="Trọng lượng (g)"
             name="weight"
           >
-            <InputNumber/>
+            <InputNumber style={{width: 200}} min="0"/>
           </Form.Item>
           <Form.Item
             label="Kích thước"
@@ -314,7 +318,7 @@ function ProductListAdminPage({
             label="Số trang"
             name="numberPages"
           >
-            <InputNumber/>
+            <InputNumber style={{width: 200}} min="0"/>
           </Form.Item>
           <Form.Item
             label="Hình thức"

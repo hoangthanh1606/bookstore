@@ -36,7 +36,7 @@ function AdminUserListPage(props) {
       },
       {
         title: 'Email', dataIndex: 'email', key: 'email',
-        render: text => <a>{text}</a>,
+        // render: text => <a style={{color: 'black'}}>{text}</a>,
       },
       {
         title: 'Address', dataIndex: 'address', key: 'address',

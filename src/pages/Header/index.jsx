@@ -31,12 +31,12 @@ function Header(props) {
   const menu = (
   <Menu>
     <Menu.Item>
-      <Link to="/profile">
+      <Link to="/profile" style={{color: 'black'}}>
         Thông tin cá nhân
       </Link>
     </Menu.Item>
     <Menu.Item>
-      <Link onClick={onLogout}>
+      <Link onClick={onLogout} style={{color: 'black'}}>
         Đăng xuất
       </Link>
     </Menu.Item>

@@ -25,7 +25,7 @@ function HeaderAdmin(props) {
   const menu = (
     <Menu>
       <Menu.Item>
-        <Link onClick={onLogout}>
+        <Link onClick={onLogout} style={{color: 'black'}}>
           Đăng xuất
         </Link>
       </Menu.Item>
