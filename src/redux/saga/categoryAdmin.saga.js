@@ -4,9 +4,13 @@ import { message } from 'antd';
 
 function* getCategoryAdminSaga(action) {
   try {
+    const { searchValue } = action.payload;
     const result = yield axios({
       method: "GET",
       url: "http://localhost:5000/categories",
+      params: {
+        ...searchValue && { q: searchValue },
+      }
     });
     yield put({
       type: "GET_CATEGORY_ADMIN_SUCCESS",
@@ -107,9 +111,13 @@ function* updateCategoryAdminSaga(action) {
 
 function* getPublisherAdminSaga(action) {
   try {
+    const { searchValue } = action.payload;
     const result = yield axios({
       method: "GET",
       url: "http://localhost:5000/publishers",
+      params: {
+        ...searchValue && {q: searchValue}
+      }
     });
     yield put({
       type: "GET_PUBLISHER_ADMIN_SUCCESS",

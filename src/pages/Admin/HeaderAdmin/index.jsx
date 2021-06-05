@@ -15,7 +15,9 @@ function HeaderAdmin(props) {
   const { userInfo, cartList } = props
 
 
-  const onSearch = value => console.log(value);
+  const onSearch = value => {
+    console.log(value);
+  }
 
   function onLogout() {
     localStorage.removeItem("userInfo")
@@ -104,7 +106,6 @@ const mapStateToProps = (state) => {
     cartList
   }
 };
-
 
 
 export default connect(mapStateToProps)(HeaderAdmin);

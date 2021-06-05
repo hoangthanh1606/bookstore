@@ -18,13 +18,14 @@ function AdminPublisherPage({
   createPublisherAdmin,
   deletePublisherAdmin
 }) {
+  const {Search} = Input;
 
   const [formPublisher] = Form.useForm()
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [publisherSelected, setPublisherSelected] = useState({})
 
   useEffect(() => {
-    getPublisherAdmin()
+    getPublisherAdmin({})
   }, [])
 
   useEffect(() => {
@@ -49,6 +50,10 @@ function AdminPublisherPage({
       createPublisherAdmin(values)
     }
     setIsModalVisible(false)
+  }
+
+  const onSearch = value => {
+    getPublisherAdmin({searchValue: value});
   }
 
   const tableColumns = [
@@ -103,6 +108,13 @@ function AdminPublisherPage({
         <h2>Danh sách Nhà xuất bản:</h2>
         <Button type="primary" onClick={() => handleCreatePublisher()} >Thêm nhà xuất bản</Button>
       </Row>
+      <Search
+          placeholder="Nhập để tìm kiếm"
+          allowClear
+          enterButton
+          style={{width: 400, margin: '0 0 20px 0' }}
+          onSearch={onSearch}
+      />
       <Table loading={publisherListAdmin.load} columns={tableColumns} dataSource={dataTable} />
       <Modal
         title={publisherSelected.id ? "Cập nhập nhà xuất bản: " : "Thêm nhà xuất bản:"}

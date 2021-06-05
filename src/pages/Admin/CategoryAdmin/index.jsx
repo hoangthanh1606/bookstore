@@ -22,6 +22,7 @@ function AdminCategoryPage({
   deleteCategoryAdmin,
   updateCategoryAdmin
 }) {
+  const {Search} = Input;
 
   const [form] = Form.useForm()
 
@@ -30,7 +31,7 @@ function AdminCategoryPage({
   const [categorySelected, setCategorySelected] = useState({})
 
   useEffect(() => {
-    getCategoryAdmin()
+    getCategoryAdmin({})
   }, [])
 
   useEffect(() => {
@@ -55,6 +56,9 @@ function AdminCategoryPage({
       createCategoryAdmin(values)
     }
     setIsModalVisible(false)
+  }
+  const onSearch = value => {
+    getCategoryAdmin({searchValue: value})
   }
 
   const tableColumns = [
@@ -107,6 +111,13 @@ function AdminCategoryPage({
         <h2>Danh sách thể loại sách:</h2>
         <Button type="primary" onClick={() => handleCreateCategory()} >Thêm thể loại sách</Button>
       </Row>
+      <Search
+          placeholder="Nhập để tìm kiếm"
+          allowClear
+          enterButton
+          style={{width: 400, margin: '0 0 20px 0' }}
+          onSearch={onSearch}
+        />
       <Table loading={categoryListAdmin.load} columns={tableColumns} dataSource={dataTable} />
       <Modal
         title={categorySelected.id ? "Cập nhập thể loại: " : "Thêm thể loại :"}

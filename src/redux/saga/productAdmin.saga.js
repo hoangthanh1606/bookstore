@@ -5,10 +5,13 @@ import { message } from 'antd';
 
 function* getProductListAdminSaga(action) {
   try {
+    const { searchValue } = action.payload;
     const result = yield axios({
       method: "GET",
       url: "http://localhost:5000/products?_expand=publisher&_expand=category",
-
+      params: {
+        ...searchValue && { q: searchValue },
+      }
     });
     yield put({
       type: "GET_PRODUCT_LIST_ADMIN_SUCCESS",

@@ -528,7 +528,9 @@ function ProductDetailPage({
         </Left>
 
         <Right>
-          <CatLabel>Trang Chủ {'>'} {productDetail.data.category.name}</CatLabel>
+          <CatLabel>
+            Trang Chủ {">"} {productDetail.data.category.name}
+          </CatLabel>
           <TitleDetail>{productDetail.data.name}</TitleDetail>
           <Rate value={renderRateList()} disabled />{" "}
           <span style={{ color: "#ffda09", marginLeft: "1rem" }}>
@@ -623,9 +625,7 @@ function ProductDetailPage({
       <div className="content-comment">{Demo()}</div>
 
       {/* products relate  */}
-      <section
-        className="container"
-      >
+      <section className="container">
         <Title title="Related Products" subtitle="Chossen Goods Books" />
         <WrapperProduct
           style={{ backgroundColor: "white", borderRadius: ".5rem" }}
@@ -639,17 +639,22 @@ function ProductDetailPage({
                     alt={productSameItem.name}
                   />
                 </Link>
-                <IconWrapper className="disabled">
-                  <i className="fas fa-shopping-cart"></i>
-                </IconWrapper>
-                <IconWrapper>
-                  <i className="fas fa-shopping-cart"></i>
-                </IconWrapper>
+                {productSameItem.countInStock === 0 ? (
+                  <IconWrapper className="disabled">
+                    <i className="fas fa-shopping-cart"></i>
+                  </IconWrapper>
+                ) : (
+                  <IconWrapper>
+                    <i className="fas fa-shopping-cart"></i>
+                  </IconWrapper>
+                )}
               </ImgContainer>
               <Bottom>
-                <ProductLink to={`/product/${productSameItem.id}`}>
-                  {productSameItem.name}
-                </ProductLink>
+                {/* <div style={{ width: "100%", height: "4.2rem" }}> */}
+                  <ProductLink to={`/product/${productSameItem.id}`}>
+                    {productSameItem.name}
+                  </ProductLink>
+                {/* </div> */}
                 <PriceRelated>
                   <PriceLabel>
                     {parseInt(productSameItem.price)

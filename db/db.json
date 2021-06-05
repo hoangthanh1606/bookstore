@@ -25,7 +25,20 @@
       "phone": "+84763719907",
       "role": "user",
       "id": 4,
-      "carts": [],
+      "carts": [
+        {
+          "productId": 8,
+          "count": 1,
+          "name": "Dấu Chân Trên Cát",
+          "price": 110,
+          "image": [
+            "/images/product8.jpg",
+            "https://cdn0.fahasa.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/d/o/doc_thu_dauchantrencat-6_1.jpg",
+            "https://cdn0.fahasa.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/d/o/doc_thu_dauchantrencat-7_1.jpg"
+          ],
+          "countInStock": 5
+        }
+      ],
       "address": "Hòa Khánh",
       "gender": "Nam",
       "birthday": "16/06/1999"

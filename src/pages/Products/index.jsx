@@ -339,11 +339,11 @@ function ProductPage({
               )}
             </ImgContainer>
             <Bottom>
-              <ProductLink
-                to= {`/product/${productItem.id}`}
-              >
-                {productItem.name}
-              </ProductLink>
+              <div style={{ width: "100%", height: "4.2rem" }}>
+                <ProductLink to={`/product/${productItem.id}`}>
+                  {productItem.name}
+                </ProductLink>
+              </div>
               <Price>
                 <PriceLabel>
                   {parseFloat(productItem.price)
