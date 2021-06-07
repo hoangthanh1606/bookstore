@@ -278,9 +278,15 @@ function ProductPage({
 
 
   function handleChangePrice(value) {
-    getProductList({
-      price: 'price',
-      asc: value,
+    getProductList({ 
+      sort: 'price',
+      order: value,
+    })
+  }
+  function handleChangeOldNew(value) {
+    getProductList({ 
+      sort: 'id',
+      order: value,
     })
   }
 
@@ -416,9 +422,9 @@ function ProductPage({
               </Select>
             </ItemFilter>
             <ItemFilter>
-              <Select style={{ width: 130 }} defaultValue="desc">
-                <Option value="desc">Mới nhất</Option>
+              <Select style={{ width: 130 }} defaultValue="asc" onChange={handleChangeOldNew}>
                 <Option value="asc">Cũ nhất</Option>
+                <Option value="desc">Mới nhất</Option>
               </Select>
             </ItemFilter>
           </Form>

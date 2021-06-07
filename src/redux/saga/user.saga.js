@@ -63,6 +63,7 @@ function* registerSaga(action) {
         name,
         phone,
         role: "user",
+        carts: [],
       });
       // console.log("function*registerSaga -> result", result)
 

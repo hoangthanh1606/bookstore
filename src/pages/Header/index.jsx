@@ -23,6 +23,7 @@ function Header(props) {
 
   function onLogout() {
     localStorage.removeItem("userInfo");
+    history.push('/')
     window.location.reload();
   }
   const menu = (

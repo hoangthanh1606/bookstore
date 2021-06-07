@@ -138,13 +138,15 @@ const Price = styled.div`
   margin-bottom: 2rem;
 `;
 
-const LinkWrapper = styled(Link)`
+const LinkWrapper = styled.div`
   display: inline-block;
   background: #ff4d4f;
   padding: 0.8rem 4rem;
   color: var(--white);
   border-radius: 3rem;
   margin-bottom: 2rem;
+  /* outline: none; */
+  cursor: pointer;
   &.disabled {
     cursor: default;
     pointer-events: none;
@@ -446,7 +448,7 @@ function ProductDetailPage({
           name: productDetail.data.name,
           price: productDetail.data.price,
           image: productDetail.data.image,
-          countInStock: productDetail.data.countInStock,
+          // countInStock: productDetail.data.countInStock,
         });
         addToCart({
           userId: userInfo.id,
@@ -464,7 +466,7 @@ function ProductDetailPage({
               name: productDetail.data.name,
               price: productDetail.data.price,
               image: productDetail.data.image,
-              countInStock: productDetail.data.countInStock,
+              // countInStock: productDetail.data.countInStock,
             },
           ],
         });
