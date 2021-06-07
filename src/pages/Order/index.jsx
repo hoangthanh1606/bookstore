@@ -52,10 +52,13 @@ function OrderPage({ cartList, addToOrder }) {
     openNotification();
   }
 
-  let total = 0;
-  cartList.data.forEach((item) => {
-    total = total + item.count * item.price;
-  });
+  var total = 0;
+  function totalPrice() {
+    cartList.data.forEach((item) => {
+      total = total + item.count * item.price;
+    });
+    return total.toFixed(3).toLocaleString("VN-vi");
+  }
 
   function renderOrderItem() {
     return cartList.data.map((cartItem, index) => {
@@ -111,7 +114,7 @@ function OrderPage({ cartList, addToOrder }) {
               align="center"
             >
               <div>Thành tiền:</div>
-              <div>{total.toFixed(3).toLocaleString("VN-vi")} VNĐ</div>
+              <div>{totalPrice()} VNĐ</div>
             </Space>
           </Card>
         </Col>

@@ -139,7 +139,15 @@ function CartPage({ cartList, addToCart, deleteItemCart }) {
       userId: userInfo.id,
       carts: newCartList,
     });
-    message.error(`Đã xóa sách "${productDetail.name}" từ giỏ hàng`, [3]);
+    message.error(`Đã xóa sách "${productDetail.name}" từ giỏ hàng`);
+  }
+
+  function totalPrice() {
+    var total = 0;
+    cartList.data.forEach((item) => {
+      total = (total + item.count * item.price);
+    });
+    return total.toFixed(3).toLocaleString('VN-vi');
   }
 
   function renderCartList() {
@@ -279,11 +287,12 @@ function CartPage({ cartList, addToCart, deleteItemCart }) {
                       )
                     </Td>
                     <Td>
-                      {cartList.data
+                      {/* {cartList.data
                         .reduce((acc, item) => acc + item.count * item.price, 0)
                         .toFixed(3)
                         .toLocaleString("VN_vi")}{" "}
-                      VNĐ
+                      VNĐ */}
+                      {totalPrice()} VNĐ
                     </Td>
                   </tr>
                   <tr>
@@ -293,11 +302,12 @@ function CartPage({ cartList, addToCart, deleteItemCart }) {
                   <tr>
                     <Td>Thành Tiền</Td>
                     <Td className="total">
-                      {cartList.data
+                      {/* {cartList.data
                         .reduce((acc, item) => acc + item.count * item.price, 0)
                         .toFixed(3)
                         .toLocaleString("VN-vi")}{" "}
-                      VNĐ
+                      VNĐ */}
+                      {totalPrice()} VNĐ
                     </Td>
                   </tr>
                 </tbody>

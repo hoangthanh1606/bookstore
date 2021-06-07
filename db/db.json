@@ -16,7 +16,24 @@
       "password": "hoangthanh",
       "sdt": "0763719907",
       "role": "admin",
-      "carts": []
+      "carts": [
+        {
+          "productId": 4,
+          "count": 2,
+          "name": "Hạnh Nhân",
+          "price": 89,
+          "image": [
+            "/images/product4.jpg",
+            "https://cdn0.fahasa.com/media/flashmagazine/images/page_images/hanh_nhan/2020_03_19_14_04_05_2.jpg",
+            "https://cdn0.fahasa.com/media/flashmagazine/images/page_images/hanh_nhan/2020_03_19_14_04_05_5.jpg"
+          ],
+          "countInStock": 5
+        }
+      ],
+      "phone": "0763719907",
+      "address": "Nguyễn Huy Tưởng",
+      "gender": "Nam",
+      "birthday": "16/06/1999"
     },
     {
       "email": "hoangthanh@gmail.com",
@@ -25,20 +42,7 @@
       "phone": "+84763719907",
       "role": "user",
       "id": 4,
-      "carts": [
-        {
-          "productId": 8,
-          "count": 1,
-          "name": "Dấu Chân Trên Cát",
-          "price": 110,
-          "image": [
-            "/images/product8.jpg",
-            "https://cdn0.fahasa.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/d/o/doc_thu_dauchantrencat-6_1.jpg",
-            "https://cdn0.fahasa.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/d/o/doc_thu_dauchantrencat-7_1.jpg"
-          ],
-          "countInStock": 5
-        }
-      ],
+      "carts": [],
       "address": "Hòa Khánh",
       "gender": "Nam",
       "birthday": "16/06/1999"

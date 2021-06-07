@@ -77,7 +77,7 @@ function OderAdmin({ getOrderListAdmin, orderListAdmin, updateOrderAdmin }) {
         if (record.status === 'waiting') {
           return (
             <Space>
-              <Button type="primary" ghost onClick={() => { handleUpdate(record.id) }}>
+              <Button type="primary"  onClick={() => { handleUpdate(record.id) }}>
                 Xác nhận
               </Button>
               <Popconfirm
