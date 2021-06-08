@@ -53,8 +53,8 @@ function ProductListAdminPage({
 
   useEffect(() => {
     getProductListAdmin({})
-    getCategoryAdmin()
-    getPublisherAdmin()
+    getCategoryAdmin({})
+    getPublisherAdmin({})
   }, [])
 
   useEffect(() => {
