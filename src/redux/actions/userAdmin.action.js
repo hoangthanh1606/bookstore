@@ -35,9 +35,4 @@ export function updateUserInfoAdminAction(params) {
   }
 }
 
-// export function changePasswordAdminAction(params) {
-//   return {
-//     type: "CHANGE_PASSWORD_ADMIN_REQUEST",
-//     payload: params
-//   }
-// }
+
