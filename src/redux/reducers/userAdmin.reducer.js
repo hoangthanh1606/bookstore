@@ -3,6 +3,11 @@ const initialState = {
     data: [],
     load: false,
     error: ''
+  },
+  userAdminInfo: {
+    data: {},
+    load: false,
+    error: ''
   }
 }
 
@@ -78,27 +83,30 @@ export default function userAdminReducer(state = initialState, action) {
       }
     }
 
-    case "GET_USER_INFO_ADMIN_REQUEST": {
+    case "EDIT_USER_ADMIN_REQUEST": {
       return {
         ...state,
         userListAdmin: {
           ...state.userListAdmin,
-          load: true
+          load: true,
         }
       }
     }
-    case "GET_USER_INFO_ADMIN_SUCCESS": {
-      const { data } = action.payload
+    case "EDIT_USER_ADMIN_SUCCESS": {
+      const { id, data } = action.payload
+      const newUser = state.userListAdmin.data
+      const userIndex = newUser.findIndex((item) => { return item.id === id })
+      newUser.splice(userIndex, 1, data)
       return {
         ...state,
         userListAdmin: {
           ...state.userListAdmin,
-          data: data,
+          data: newUser,
           load: false
         }
       }
     }
-    case "GET_USER_INFO_ADMIN_FAIL": {
+    case "EDIT_USER_ADMIN_FAIL": {
       const { error } = action.payload
       return {
         ...state,
@@ -109,11 +117,42 @@ export default function userAdminReducer(state = initialState, action) {
         }
       }
     }
+    case "GET_USER_INFO_ADMIN_REQUEST": {
+      return {
+        ...state,
+        userAdminInfo: {
+          ...state.userAdminInfo,
+          load: true
+        }
+      }
+    }
+    case "GET_USER_INFO_ADMIN_SUCCESS": {
+      const { data } = action.payload
+      return {
+        ...state,
+        userAdminInfo: {
+          ...state.userAdminInfo,
+          data: data,
+          load: false
+        }
+      }
+    }
+    case "GET_USER_INFO_ADMIN_FAIL": {
+      const { error } = action.payload
+      return {
+        ...state,
+        userAdminInfo: {
+          ...state.userAdminInfo,
+          error: error,
+          load: false
+        }
+      }
+    }
     case "UPDATE_USER_INFO_ADMIN_REQUEST": {
       return {
         ...state,
-        userListAdmin: {
-          ...state.userListAdmin,
+        userAdminInfo: {
+          ...state.userAdminInfo,
           load: true,
         }
       }
@@ -122,8 +161,8 @@ export default function userAdminReducer(state = initialState, action) {
       const { data } = action.payload
       return {
         ...state,
-        userListAdmin: {
-          ...state.userListAdmin,
+        userAdminInfo: {
+          ...state.userAdminInfo,
           data: data,
           load: false
         }
@@ -133,8 +172,8 @@ export default function userAdminReducer(state = initialState, action) {
       const { error } = action.payload
       return {
         ...state,
-        userListAdmin: {
-          ...state.userListAdmin,
+        userAdminInfo: {
+          ...state.userAdminInfo,
           error: error,
           load: false
         }

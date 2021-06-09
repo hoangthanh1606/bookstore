@@ -32,15 +32,12 @@ function* deleteUserAdminSaga(action) {
 
 function* editUserAdminSaga(action) {
   try {
-    const { id, name, email, phone, password } = action.payload
+    const { id, role } = action.payload
     const result = yield axios({
       method: "PATCH",
       url: `http://localhost:5000/users/${id}`,
       data: {
-        name,
-        email,
-        phone,
-        password
+        role
       }
     })
     yield put({
