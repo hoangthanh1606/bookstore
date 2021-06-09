@@ -11,7 +11,8 @@ function SettingAdmin({
   getUserInfoAdmin,
   userListAdmin,
   updateUserInfoAdmin,
-  changePassword
+  changePassword,
+  userAdminInfo
 }) {
 
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -52,7 +53,7 @@ function SettingAdmin({
 
   return (
     <>
-      <div style={{ width: '100%', height: 'calc(100vh - 80px)'}} >
+      <div style={{ width: '100%', height: 'calc(100vh - 80px)' }} >
         <Tabs defaultActiveKey="1" >
           <TabPane tab="Thông tin cá nhân. " key="1">
             <>
@@ -61,27 +62,27 @@ function SettingAdmin({
               >
                 <Row>
                   <Col span={6} >Họ và tên:</Col>
-                  <Col span={16}>{userListAdmin.data.name}</Col>
+                  <Col span={16}>{userAdminInfo.data.name}</Col>
                 </Row>
                 <Row>
                   <Col span={6}>Email:</Col>
-                  <Col span={16}>{userListAdmin.data.email}</Col>
+                  <Col span={16}>{userAdminInfo.data.email}</Col>
                 </Row>
                 <Row>
                   <Col span={6}>Số điện thoại:</Col>
-                  <Col span={16}> {userListAdmin.data.phone} </Col>
+                  <Col span={16}> {userAdminInfo.data.phone} </Col>
                 </Row>
                 <Row>
                   <Col span={6}>Địa chỉ:</Col>
-                  <Col span={16}>{userListAdmin.data.address}</Col>
+                  <Col span={16}>{userAdminInfo.data.address}</Col>
                 </Row>
                 <Row>
                   <Col span={6}>Giới tính:</Col>
-                  <Col span={16}>{userListAdmin.data.gender}</Col>
+                  <Col span={16}>{userAdminInfo.data.gender}</Col>
                 </Row>
                 <Row>
                   <Col span={6}>Ngày sinh:</Col>
-                  <Col span={16}>{userListAdmin.data.birthday}</Col>
+                  <Col span={16}>{userAdminInfo.data.birthday}</Col>
                 </Row>
 
               </Card>
@@ -91,12 +92,12 @@ function SettingAdmin({
                   layout="vertical"
                   name="Chỉnh sửa thông tin cá nhân"
                   initialValues={{
-                    name: userListAdmin.data.name,
-                    email: userListAdmin.data.email,
-                    phone: userListAdmin.data.phone,
-                    address: userListAdmin.data.address,
-                    gender: userListAdmin.data.gender,
-                    birthday: moment(userListAdmin.data.birthday, "DD/MM/YYYY")
+                    name: userAdminInfo.data.name,
+                    email: userAdminInfo.data.email,
+                    phone: userAdminInfo.data.phone,
+                    address: userAdminInfo.data.address,
+                    gender: userAdminInfo.data.gender,
+                    // birthday: moment(userAdminInfo.data.birthday, "DD/MM/YYYY")
                   }}
                   onFinish={handleUpdateUser}
 
@@ -190,7 +191,7 @@ function SettingAdmin({
                   layout="vertical"
                   name="basic"
                   initialValues={{
-                    // password: userListAdmin.data.password
+                    // password: userAdminInfo.data.password
                   }}
                   onFinish={handleChangePassword}
                 >
@@ -269,10 +270,10 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 const mapStateToProps = (state) => {
-  const { userListAdmin } = state.userAdminReducer
-  console.log("mapStateToProps -> userListAdmin", userListAdmin)
+  const { userListAdmin, userAdminInfo } = state.userAdminReducer
   return {
-    userListAdmin
+    userListAdmin,
+    userAdminInfo
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(SettingAdmin);

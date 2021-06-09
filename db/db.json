@@ -7,7 +7,11 @@
       "password": "1234",
       "sdt": "0976703148",
       "role": "admin",
-      "carts": []
+      "carts": [],
+      "phone": "0976703148",
+      "address": "Quế Sơn - Quảng Nam",
+      "gender": "Nam",
+      "birthday": "30/01/1999"
     },
     {
       "id": 2,
@@ -609,7 +613,61 @@
       "name": "Alphabook"
     }
   ],
-  "orders": [],
+  "orders": [
+    {
+      "orderInfo": {
+        "name": "thien1",
+        "email": "dinhhuuthien99@gmail.com",
+        "phone": "01234567",
+        "address": "Quế Sơn",
+        "totalPrice": 135,
+        "date": "12:23 08/06/2021"
+      },
+      "userId": 1,
+      "cartList": [
+        {
+          "productId": 2,
+          "count": 1,
+          "name": "Tìm Em Nơi Anh - Find Me",
+          "price": 135,
+          "image": [
+            "/images/product2.jpg",
+            "https://cdn0.fahasa.com/media/flashmagazine/images/page_images/tim_em_noi_anh___find_me/2021_03_13_12_08_47_3.jpg",
+            "https://cdn0.fahasa.com/media/flashmagazine/images/page_images/tim_em_noi_anh___find_me/2021_03_13_12_08_47_16.jpg",
+            "https://cdn0.fahasa.com/media/flashmagazine/images/page_images/tim_em_noi_anh___find_me/2021_03_13_12_08_47_2.jpg"
+          ]
+        }
+      ],
+      "status": "confirmed",
+      "id": 1
+    },
+    {
+      "orderInfo": {
+        "name": "cdsad",
+        "email": "dinhhuuthien99@gmail.com",
+        "phone": "01234567",
+        "address": "Quế Sơn",
+        "totalPrice": 89,
+        "date": "04:34 08/06/2021"
+      },
+      "userId": 1,
+      "cartList": [
+        {
+          "productId": 3,
+          "count": 1,
+          "name": "Con Chim Xanh Biếc Bay Về",
+          "price": 89,
+          "image": [
+            "/images/product3.jpg",
+            "https://cdn0.fahasa.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/c/o/con_chim_xanh_bia_mem_3d.jpg",
+            "https://cdn0.fahasa.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/c/o/con_chim_xanh_biec_bay_ve_bia-mem.jpg"
+          ]
+        }
+      ],
+      "status": "confirmed",
+      "id": 2
+    }
+  ],
   "reviews": [
     {
       "name": "Hoàng Thành",
