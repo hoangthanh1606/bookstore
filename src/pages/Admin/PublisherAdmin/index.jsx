@@ -18,7 +18,7 @@ function AdminPublisherPage({
   createPublisherAdmin,
   deletePublisherAdmin
 }) {
-  const {Search} = Input;
+  const { Search } = Input;
 
   const [formPublisher] = Form.useForm()
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -53,7 +53,7 @@ function AdminPublisherPage({
   }
 
   const onSearch = value => {
-    getPublisherAdmin({searchValue: value});
+    getPublisherAdmin({ searchValue: value });
   }
 
   const tableColumns = [
@@ -103,46 +103,47 @@ function AdminPublisherPage({
   })
   return (
     <>
-    <div style={{width: '100%', height: 'calc(100vh - 80px)'}}>
-      <Row justify="space-between" style={{ marginBottom: 16 }}>
-        <h2>Danh sách Nhà xuất bản:</h2>
-        <Button type="primary" onClick={() => handleCreatePublisher()} >Thêm nhà xuất bản</Button>
-      </Row>
-      <Search
-          placeholder="Nhập để tìm kiếm"
-          allowClear
-          enterButton
-          style={{width: 400, margin: '0 0 20px 0' }}
-          onSearch={onSearch}
-      />
-      <Table loading={publisherListAdmin.load} columns={tableColumns} dataSource={dataTable} />
-      <Modal
-        title={publisherSelected.id ? "Cập nhập nhà xuất bản: " : "Thêm nhà xuất bản:"}
-        width={600}
-        visible={isModalVisible}
-        onOk={() => handleSubmitForm()}
-        onCancel={() => setIsModalVisible(false)}>
-        <Form
-          form={formPublisher}
-          layout="vertical"
-          name="categoryForm"
-          initialValues={publisherSelected.id
-            ? { ...publisherSelected }
-            : {}
-          }
-        >
-          <Form.Item
-            label="Nhà xuất bản"
-            name="name"
-            rules={[
-              { required: true, },
-            ]}
+      <div style={{ width: '100%', height: 'calc(100vh - 80px)' }}>
+        <Row justify="space-between" style={{ marginBottom: 16 }}>
+          <h2>Danh sách Nhà xuất bản</h2>
+          <Search
+            placeholder="Nhập để tìm kiếm"
+            allowClear
+            enterButton
+            style={{ width: 400, margin: '0 0 20px 0' }}
+            onSearch={onSearch}
+          />
+          <Button type="primary" onClick={() => handleCreatePublisher()} >Thêm nhà xuất bản</Button>
+        </Row>
+
+        <Table loading={publisherListAdmin.load} columns={tableColumns} dataSource={dataTable} />
+        <Modal
+          title={publisherSelected.id ? "Cập nhập nhà xuất bản: " : "Thêm nhà xuất bản:"}
+          width={600}
+          visible={isModalVisible}
+          onOk={() => handleSubmitForm()}
+          onCancel={() => setIsModalVisible(false)}>
+          <Form
+            form={formPublisher}
+            layout="vertical"
+            name="categoryForm"
+            initialValues={publisherSelected.id
+              ? { ...publisherSelected }
+              : {}
+            }
           >
-            <Input />
-          </Form.Item>
-        </Form>
-      </Modal>
-    </div>
+            <Form.Item
+              label="Nhà xuất bản"
+              name="name"
+              rules={[
+                { required: true, },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+          </Form>
+        </Modal>
+      </div>
     </>
   )
 }
