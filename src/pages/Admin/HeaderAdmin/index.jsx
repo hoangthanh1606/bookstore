@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { UserOutlined, LoginOutlined, ShoppingCartOutlined } from '@ant-design/icons'
 
 
-import { Input, Avatar, Menu, Dropdown, Button } from 'antd';
+import { Input, Avatar, Menu, Dropdown, Button} from 'antd';
 
 
 import history from '../../../utils/history'
@@ -27,12 +27,12 @@ function HeaderAdmin(props) {
   const menu = (
     <Menu>
       <Menu.Item>
-        <Link onClick={onLogout} style={{ color: 'black' }}>
+        <Link onClick={onLogout} style={{color: 'black'}}>
           Đăng xuất
         </Link>
       </Menu.Item>
     </Menu>
-  );
+    );
 
   return (
     <>
@@ -56,13 +56,13 @@ function HeaderAdmin(props) {
               Bookstore
             </Link>
             <div style={{ marginLeft: "60px", width: "300px" }}>
-              {/* <Search
+              <Search
                 placeholder="Nhập để tìm kiếm"
                 allowClear
                 enterButton
                 size="middle"
                 onSearch={onSearch}
-              /> */}
+              />
             </div>
           </div>
 
@@ -76,18 +76,18 @@ function HeaderAdmin(props) {
                   </p>
                 </Dropdown>
               ) : (
-                  <Button onClick={() => history.push("/login")}>
-                    <LoginOutlined />
+                <Button onClick={() => history.push("/login")}>
+                  <LoginOutlined />
                   Đăng nhập
-                  </Button>
-                )}
+                </Button>
+              )}
             </div>
             {userInfo.data.id ? (
-              <Link className="header-user-link" to="/carts">
-                <ShoppingCartOutlined />
-                {/* <small className="count d-flex">{cartList.data.length}</small> */}
-              </Link>
-            ) : (
+                <Link className="header-user-link" to="/carts">
+                  <ShoppingCartOutlined />
+                  {/* <small className="count d-flex">{cartList.data.length}</small> */}
+                </Link>
+              ) : (
                 <Link className="header-user-link" to="/carts">
                   <ShoppingCartOutlined />
                 </Link>

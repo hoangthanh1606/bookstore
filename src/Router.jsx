@@ -22,7 +22,6 @@ import AdminPublisherPage from './pages/Admin/PublisherAdmin'
 import OderAdmin from './pages/Admin/OderAdmin'
 import SettingAdmin from './pages/Admin/SettingAdmin'
 // import SearchPage from './pages/Search'
-import Dashboard from './pages/Admin/Dashboard'
 
 function BrowserRouter() {
   return (
@@ -33,7 +32,7 @@ function BrowserRouter() {
         <DefaultLayout exact path={ROUTERS.PROD_DETAIL} component={ProductDetailPage} />
         <DefaultLayout exact path={ROUTERS.CART} component={CartPage} />
         <DefaultLayout exact path='/order' component={OrderPage} />
-        <DefaultLayout exact path='/ordersuccess' component={OrderSuccess} />
+        <DefaultLayout exact path='/ordersuccess' component={OrderSuccess}/>
         {/* <DefaultLayout exact path='/search' component={SearchPage} /> */}
         <LoginLayout exact path={ROUTERS.LOGIN} component={FormLogin} />
         <DefaultLayout exact path='/profile' component={Profile} />
@@ -44,7 +43,6 @@ function BrowserRouter() {
         <PrivateLayout exact path='/admin/publishers' component={AdminPublisherPage} />
         <PrivateLayout exact path='/admin/oders' component={OderAdmin} />
         <PrivateLayout exact path='/admin/setting' component={SettingAdmin} />
-        <PrivateLayout exact path='/admin/dashboard' component={Dashboard} />
       </Switch>
     </Router>
   );

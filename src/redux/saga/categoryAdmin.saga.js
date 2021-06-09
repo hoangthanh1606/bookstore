@@ -116,7 +116,7 @@ function* getPublisherAdminSaga(action) {
       method: "GET",
       url: "http://localhost:5000/publishers",
       params: {
-        ...searchValue && { q: searchValue },
+        ...searchValue && {q: searchValue}
       }
     });
     yield put({

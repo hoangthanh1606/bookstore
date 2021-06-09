@@ -42,19 +42,20 @@ function ProductListAdminPage({
       thumbUrl: image,
     }))
     : []
+  console.log("🚀 ~ file: index.jsx ~ line 37 ~ formImages", formImages)
   const initialValues = productSelected.id
     ? {
       ...productSelected,
       image: formImages,
     }
     : {}
+  console.log("🚀 ~ file: index.jsx ~ line 45 ~ initialValues", initialValues)
 
   useEffect(() => {
     getProductListAdmin({})
     getCategoryAdmin({})
     getPublisherAdmin({})
   }, [])
-
 
   useEffect(() => {
     productForm.resetFields()
@@ -108,7 +109,7 @@ function ProductListAdminPage({
     })
   }
   const onSearch = value => {
-    getProductListAdmin({ searchValue: value })
+    getProductListAdmin({searchValue: value})
   }
 
   const tableColumns = [
@@ -117,7 +118,7 @@ function ProductListAdminPage({
       dataIndex: 'name',
       key: 'name',
       width: 150,
-      render: text => <Link style={{ color: 'black' }}>{text}</Link>,
+      render: text => <Link style={{color: 'black'}}>{text}</Link>,
     },
     {
       title: 'Loại sách',
@@ -196,134 +197,132 @@ function ProductListAdminPage({
 
   return (
     <>
-      <div style={{ width: '100%', height: 'calc(100vh - 80px)' }}>
-        <Row justify="space-between" style={{ marginBottom: 16 }}>
-          <h2>Danh sách sản phẩm</h2>
-          <Search
-            placeholder="Nhập để tìm kiếm"
-            allowClear
-            enterButton
-            style={{ width: 400, margin: '0 0 20px 0' }}
-            onSearch={onSearch}
-          />
-          <Button type="primary" onClick={() => handleCreateProduct()}>
-            Thêm sản phẩm
+    <div style={{width: '100%', height: 'calc(100vh - 80px)'}}>
+      <Row justify="space-between" style={{ marginBottom: 16}}>
+        <h2>Danh sách sản phẩm:</h2>
+        <Button type="primary" onClick={() => handleCreateProduct()}>
+          Thêm sản phẩm
         </Button>
-        </Row>
-
-        <Table
-          loading={productListAdmin.load}
-          columns={tableColumns}
-          dataSource={dataTable}
-          scroll={{ y: 450 }}
+      </Row>
+        <Search
+          placeholder="Nhập để tìm kiếm"
+          allowClear
+          enterButton
+          style={{width: 400, margin: '0 0 20px 0' }}
+          onSearch={onSearch}
         />
-        <Modal
-          title={productSelected.id ? "Cập nhập sản phẩm: " : "Thêm sản phẩm:"}
-          width={700}
-          style={{ top: 20 }}
-          visible={isModalVisible}
-          onOk={() => handleSubmitForm()}
-          onCancel={() => setIsModalVisible(false)}
+      <Table
+        loading={productListAdmin.load}
+        columns={tableColumns}
+        dataSource={dataTable}
+      />
+      <Modal
+        title={productSelected.id ? "Cập nhập sản phẩm: " : "Thêm sản phẩm:"}
+        width={700}
+        style={{ top: 20 }}
+        visible={isModalVisible}
+        onOk={() => handleSubmitForm()}
+        onCancel={() => setIsModalVisible(false)}
+      >
+        <Form
+          form={productForm}
+          layout="vertical"
+          name="productFrom"
+          initialValues={initialValues}
         >
-          <Form
-            form={productForm}
-            layout="vertical"
-            name="productFrom"
-            initialValues={initialValues}
+          <Form.Item
+            label="Tên Sách"
+            name="name"
+            rules={[{ required: true, message: "Vui lòng nhập tên của sách!" }]}
           >
-            <Form.Item
-              label="Tên Sách"
-              name="name"
-              rules={[{ required: true, message: "Vui lòng nhập tên của sách!" }]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              name="categoryId"
-              label="Loại sách"
-              rules={[{ required: true, message: "Vui lòng nhập loại sách!" }]}
-            >
-              <Select placeholder="Loại sản phẩm">{renderCategory()}</Select>
-            </Form.Item>
-            <Form.Item
-              label="Nhà cung cấp"
-              name="publisherId"
-              rules={[
-                { required: true, message: "Vui lòng nhập tên nhà cung cấp!" },
-              ]}
-            >
-              <Select placeholder="Loại sản phẩm">{renderPublisher()}</Select>
-            </Form.Item>
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name="categoryId"
+            label="Loại sách"
+            rules={[{ required: true, message: "Vui lòng nhập loại sách!" }]}
+          >
+            <Select placeholder="Loại sản phẩm">{renderCategory()}</Select>
+          </Form.Item>
+          <Form.Item
+            label="Nhà cung cấp"
+            name="publisherId"
+            rules={[
+              { required: true, message: "Vui lòng nhập tên nhà cung cấp!" },
+            ]}
+          >
+            <Select placeholder="Loại sản phẩm">{renderPublisher()}</Select>
+          </Form.Item>
 
-            <Form.Item
-              valuePropName="fileList"
-              label="Hình ảnh"
-              name="image"
-              getValueFromEvent={(e) => {
-                if (Array.isArray(e)) return e;
-                return e && e.fileList;
-              }}
-              validateFirst
-              rules={[
-                { required: true, message: "Vui lòng tải ảnh lên!" },
-                () => ({
-                  validator(_, value) {
-                    if (!["image/png", "image/jpeg"].includes(value[0].type)) {
-                      return Promise.reject("File không đúng định dạng");
-                    }
-                    return Promise.resolve();
-                  },
-                }),
-              ]}
-            >
-              <Upload listType="picture" beforeUpload={() => false}>
-                <Button icon={<UploadOutlined />}>Click to upload</Button>
-              </Upload>
-            </Form.Item>
+          <Form.Item
+            valuePropName="fileList"
+            label="Hình ảnh"
+            name="image"
+            getValueFromEvent={(e) => {
+              if (Array.isArray(e)) return e;
+              return e && e.fileList;
+            }}
+            validateFirst
+            rules={[
+              { required: true, message: "Vui lòng tải ảnh lên!" },
+              () => ({
+                validator(_, value) {
+                  if (!["image/png", "image/jpeg"].includes(value[0].type)) {
+                    return Promise.reject("File không đúng định dạng");
+                  }
+                  return Promise.resolve();
+                },
+              }),
+            ]}
+          >
+            <Upload listType="picture" beforeUpload={() => false}>
+              <Button icon={<UploadOutlined />}>Click to upload</Button>
+            </Upload>
+          </Form.Item>
 
-            <Form.Item label="Mô tả" name="description">
-              <Input.TextArea />
-            </Form.Item>
-            <Form.Item
-              label="Số lượng sách"
-              name="countInStock"
-              rules={[
-                { required: true, message: "Vui lòng nhập số lượng của sách!" },
-              ]}
-            >
-              <InputNumber min={1} style={{ width: 200 }} min="0" />
-            </Form.Item>
-            <Form.Item
-              label="Giá"
-              name="price"
-              rules={[{ required: true, message: "Vui lòng nhập giá của sách" }]}
-            >
-              <InputNumber style={{ width: 200 }} min="0" />
-            </Form.Item>
-            <Form.Item label="Mã hàng" name="code">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Tác giả" name="author">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Năm xuất bản" name="publicYear">
-              <InputNumber style={{ width: 200 }} min="0" />
-            </Form.Item>
-            <Form.Item label="Trọng lượng (g)" name="weight">
-              <InputNumber style={{ width: 200 }} min="0" />
-            </Form.Item>
-            <Form.Item label="Kích thước" name="size">
-              <Input />
-            </Form.Item>
-            <Form.Item label="Số trang" name="numberPages">
-              <InputNumber style={{ width: 200 }} min="0" />
-            </Form.Item>
-            <Form.Item label="Hình thức" name="formality">
-              <Input />
-            </Form.Item>
-          </Form>
-        </Modal>
-      </div>
+          <Form.Item label="Mô tả" name="description">
+            <Input.TextArea />
+          </Form.Item>
+          <Form.Item
+            label="Số lượng sách"
+            name="countInStock"
+            rules={[
+              { required: true, message: "Vui lòng nhập số lượng của sách!" },
+            ]}
+          >
+            <InputNumber min={1} style={{ width: 200 }} min="0" />
+          </Form.Item>
+          <Form.Item
+            label="Giá"
+            name="price"
+            rules={[{ required: true, message: "Vui lòng nhập giá của sách" }]}
+          >
+            <InputNumber style={{ width: 200 }} min="0" />
+          </Form.Item>
+          <Form.Item label="Mã hàng" name="code">
+            <Input />
+          </Form.Item>
+          <Form.Item label="Tác giả" name="author">
+            <Input />
+          </Form.Item>
+          <Form.Item label="Năm xuất bản" name="publicYear">
+            <InputNumber style={{ width: 200 }} min="0" />
+          </Form.Item>
+          <Form.Item label="Trọng lượng (g)" name="weight">
+            <InputNumber style={{ width: 200 }} min="0" />
+          </Form.Item>
+          <Form.Item label="Kích thước" name="size">
+            <Input />
+          </Form.Item>
+          <Form.Item label="Số trang" name="numberPages">
+            <InputNumber style={{ width: 200 }} min="0" />
+          </Form.Item>
+          <Form.Item label="Hình thức" name="formality">
+            <Input />
+          </Form.Item>
+        </Form>
+      </Modal>
+    </div>
     </>
   );
 }

@@ -3,11 +3,6 @@ const initialState = {
     data: [],
     load: false,
     error: ''
-  },
-  userAdminInfo: {
-    data: {},
-    load: false,
-    error: ''
   }
 }
 
@@ -83,45 +78,11 @@ export default function userAdminReducer(state = initialState, action) {
       }
     }
 
-    case "EDIT_USER_ADMIN_REQUEST": {
-      return {
-        ...state,
-        userListAdmin: {
-          ...state.userListAdmin,
-          load: true,
-        }
-      }
-    }
-    case "EDIT_USER_ADMIN_SUCCESS": {
-      const { id, data } = action.payload
-      const newUser = state.userListAdmin.data
-      const userIndex = newUser.findIndex((item) => { return item.id === id })
-      newUser.splice(userIndex, 1, data)
-      return {
-        ...state,
-        userListAdmin: {
-          ...state.userListAdmin,
-          data: newUser,
-          load: false
-        }
-      }
-    }
-    case "EDIT_USER_ADMIN_FAIL": {
-      const { error } = action.payload
-      return {
-        ...state,
-        userListAdmin: {
-          ...state.userListAdmin,
-          error: error,
-          load: false
-        }
-      }
-    }
     case "GET_USER_INFO_ADMIN_REQUEST": {
       return {
         ...state,
-        userAdminInfo: {
-          ...state.userAdminInfo,
+        userListAdmin: {
+          ...state.userListAdmin,
           load: true
         }
       }
@@ -130,8 +91,8 @@ export default function userAdminReducer(state = initialState, action) {
       const { data } = action.payload
       return {
         ...state,
-        userAdminInfo: {
-          ...state.userAdminInfo,
+        userListAdmin: {
+          ...state.userListAdmin,
           data: data,
           load: false
         }
@@ -141,8 +102,8 @@ export default function userAdminReducer(state = initialState, action) {
       const { error } = action.payload
       return {
         ...state,
-        userAdminInfo: {
-          ...state.userAdminInfo,
+        userListAdmin: {
+          ...state.userListAdmin,
           error: error,
           load: false
         }
@@ -151,8 +112,8 @@ export default function userAdminReducer(state = initialState, action) {
     case "UPDATE_USER_INFO_ADMIN_REQUEST": {
       return {
         ...state,
-        userAdminInfo: {
-          ...state.userAdminInfo,
+        userListAdmin: {
+          ...state.userListAdmin,
           load: true,
         }
       }
@@ -161,8 +122,8 @@ export default function userAdminReducer(state = initialState, action) {
       const { data } = action.payload
       return {
         ...state,
-        userAdminInfo: {
-          ...state.userAdminInfo,
+        userListAdmin: {
+          ...state.userListAdmin,
           data: data,
           load: false
         }
@@ -172,8 +133,8 @@ export default function userAdminReducer(state = initialState, action) {
       const { error } = action.payload
       return {
         ...state,
-        userAdminInfo: {
-          ...state.userAdminInfo,
+        userListAdmin: {
+          ...state.userListAdmin,
           error: error,
           load: false
         }

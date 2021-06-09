@@ -73,13 +73,11 @@ function OderAdmin({ getOrderListAdmin, orderListAdmin, updateOrderAdmin }) {
       title: 'Hành động',
       dataIndex: 'action',
       key: 'action',
-      fixed: 'right',
-      // width: 150,
       render: (_, record) => {
         if (record.status === 'waiting') {
           return (
             <Space>
-              <Button type="primary" onClick={() => { handleUpdate(record.id) }}>
+              <Button type="primary"  onClick={() => { handleUpdate(record.id) }}>
                 Xác nhận
               </Button>
               <Popconfirm
@@ -124,18 +122,18 @@ function OderAdmin({ getOrderListAdmin, orderListAdmin, updateOrderAdmin }) {
 
   return (
     <>
-      <div style={{ width: '100%', height: 'calc(100vh - 80px)' }}>
-        <Row justify="space-between" style={{ marginBottom: 16 }}>
-          <h2>Danh sách đơn hàng:</h2>
-          <Select defaultValue="Chọn đơn hàng" style={{ width: 200 }} onSelect={onSelect}>
-            <Option >Tất cả đơn hàng</Option>
-            <Option value="waiting">Đang đợi xác nhận</Option>
-            <Option value="confirmed">Đã xác nhận</Option>
-            <Option value="canceled">Đã hủy</Option>
-          </Select>
-        </Row>
-        <Table columns={tableColumns} dataSource={dataTable} scroll={{ x: 1400, y: 500 }} />
-      </div>
+    <div style={{ width: '100%', height: 'calc(100vh - 80px)'}}>
+      <Row justify="space-between" style={{ marginBottom: 16}}>
+        <h2>Danh sách đơn hàng:</h2>
+        <Select defaultValue="Chọn đơn hàng" style={{ width: 200 }} onSelect={onSelect}>
+          <Option >Tất cả đơn hàng</Option>
+          <Option value="waiting">Đang đợi xác nhận</Option>
+          <Option value="confirmed">Đã xác nhận</Option>
+          <Option value="canceled">Đã hủy</Option>
+        </Select>
+      </Row>
+      <Table columns={tableColumns} dataSource={dataTable} />
+    </div>
     </>
   )
 }
